@@ -1,0 +1,41 @@
+﻿@model KisiselBlog.Models.Paylasimlar
+@using System.Globalization;
+
+
+<article class="box post post-excerpt">
+    <header>
+
+        <h2><a href="#">@Model.PaylasimBaslik</a></h2>
+    </header>
+    <div class="info">
+        <span class="date"><span class="month">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.PaylasimTarih.Value.Month)<span>y</span></span> <span class="day">@Model.PaylasimTarih.Value.Day</span><span class="year">, @Model.PaylasimTarih.Value.Year</span></span>
+        <ul class="stats">
+            <li><a href="#" class="icon fa-eye">@Model.PaylasimGorulmeSayisi</a></li>
+            <li><a href="#" class="icon fa-comment">15</a></li>
+            <li><a href="#" class="icon fa-heart">@Model.PaylasimBegenmeSayisi</a></li>
+        </ul>
+    </div>
+    @if (Model.PaylasimResimGorunur)
+    {
+        <a href="#" class="image featured"><img src="/images/@Model.PaylasimResim" alt="" /></a>
+
+    }
+    <p>
+        @Html.Raw(Model.PaylasimHTML)
+    </p>
+
+</article>
+
+@*<ul class="comment-list">
+        <h5 class="post-author_head">Written by <a href="#" title="Posts by admin" rel="author">admin</a></h5>
+        <li>
+            <img src="images/avatar.png" class="img-responsive" alt="">
+            <div class="desc">
+                <p>View all posts by: <a href="#" title="Posts by admin" rel="author">admin</a></p>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>*@
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script>

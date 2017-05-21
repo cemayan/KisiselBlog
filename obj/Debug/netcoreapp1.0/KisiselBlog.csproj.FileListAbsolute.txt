@@ -1,0 +1,18 @@
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.deps.json
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.runtimeconfig.json
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.runtimeconfig.dev.json
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.dll
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.pdb
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.csprojResolveAssemblyReference.cache
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.AssemblyInfo.cs
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.dll
+C:/Users/Cem/Documents/Visual Studio 2015/Projects/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.pdb
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.deps.json
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.runtimeconfig.json
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.runtimeconfig.dev.json
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.dll
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/bin/Debug/netcoreapp1.0/KisiselBlog.pdb
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.csprojResolveAssemblyReference.cache
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.AssemblyInfo.cs
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.dll
+/Users/cayan/Desktop/Windows Projeler/KisiselBlog/src/KisiselBlog/obj/Debug/netcoreapp1.0/KisiselBlog.pdb

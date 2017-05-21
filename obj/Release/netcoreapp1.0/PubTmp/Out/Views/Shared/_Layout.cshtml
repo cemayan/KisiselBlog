@@ -1,0 +1,214 @@
+﻿@model dynamic
+@using System.Text.RegularExpressions;
+@using System.Text;
+@using System.Globalization;
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>cemayan</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <environment names="Staging,Production">
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+                <script src="~/assets/js/skel.min.js" asp-append-version="true"></script>
+        <script src="~/assets/js/main.js" asp-append-version="true"></script>
+
+        <script src="~/assets/js/util.js" asp-append-version="true"></script>
+
+
+    </environment>
+
+    <environment names="Staging,Production">
+        <link href="~/assets/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/assets/css/main.css" rel="stylesheet" />
+
+    </environment>
+
+
+</head>
+
+<body>
+
+
+    <div id="content">
+        <div class="inner">
+            @RenderBody()
+        </div>
+    </div>
+
+    <div id="sidebar">
+
+        <h1 id="logo"><a href="@Url.Action("Index","Home")">CEM AYAN</a></h1>
+
+
+        <nav id="nav">
+            <ul>
+                <li id="gonderiler" class="current"><a href="@Url.Action("Index","Home")">Son Gönderiler</a></li>
+                <li id="arsiv"><a href="@Url.Action("Index","Arsiv")">Arşiv</a></li>
+                <li id="hakkimda"><a href="#">Hakkımda</a></li>
+
+            </ul>
+        </nav>
+
+        <script>
+            $("#hakkimda").click(function () {
+                $(this).attr("class", "current");
+                $("#gonderiler").removeAttr("class", "current");
+                $("#arsiv").removeAttr("class", "current");
+            })
+
+            $("#arsiv").click(function () {
+                $(this).attr("class", "current");
+                $("#gonderiler").removeAttr("class", "current");
+                $("#hakkimda").removeAttr("class", "current");
+            })
+
+            $("#gonderiler").click(function () {
+                $(this).attr("class", "current");
+                $("#arsiv").removeAttr("class", "current");
+                $("#hakkimda").removeAttr("class", "current");
+            })
+        </script>
+
+        <section class="box search">
+            <form method="post" action="#">
+                <input type="text" class="text" name="search" placeholder="Arama Yap" />
+            </form>
+        </section>
+
+
+        <section class="box recent-posts">
+            <header>
+                <h2>Başlıca Paylaşımlar</h2>
+            </header>
+            <ul>
+                @foreach (var item in ViewBag.OrtakIcerikler.BaslicaPaylasimlar)
+                {
+                    <li><a href="@Url.Action("Detay","Paylasimlar",new {id=Degistir(item.ID,item.PaylasimBaslik) })">@item.PaylasimBaslik</a></li>
+                }
+            </ul>
+        </section>
+
+
+        <section class="box recent-posts">
+            <header>
+                <h2>Kategoriler</h2>
+            </header>
+            <ul>
+                @foreach (var item in ViewBag.OrtakIcerikler.TumKategoriler)
+                {
+                    <li><a href="@Url.Action("Kategori","Paylasimlar",new {id=item.ID})">@item.KategoriAdi</a></li>
+                }
+            </ul>
+        </section>
+
+        <section class="box recent-posts">
+            <header>
+                <h2>Arşiv</h2>
+            </header>
+            <ul>
+                @foreach (var item in ViewBag.OrtakIcerikler.ArsivTarih)
+                {
+                    <li><a href="@Url.Action("Arsiv","Paylasimlar",new {Ay=item.Ay,Yil =item.Yil})">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Ay)&nbsp;@item.Yil (@item.Sayi)</a></li>
+                }
+            </ul>
+        </section>
+
+
+
+
+
+        @*<section class="box text-style1">
+            <div class="inner">
+                <p>
+                    <strong>Striped:</strong> A free and fully responsive HTML5 site
+                    template designed by <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a>
+                </p>
+            </div>
+        </section>*@
+
+
+
+        <!-- Recent Comments -->
+        @*<section class="box recent-comments">
+            <header>
+                <h2>Recent Comments</h2>
+            </header>
+            <ul>
+                <li>case on <a href="#">Lorem ipsum dolor</a></li>
+                <li>molly on <a href="#">Sed dolore magna</a></li>
+                <li>case on <a href="#">Sed dolore magna</a></li>
+            </ul>
+        </section>*@
+
+        <!-- Calendar -->
+
+        <!-- Copyright -->
+        <ul id="copyright">
+            <li>&copy; cemayan.com</li>
+            <li style="display:none">Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+
+    </div>
+
+
+
+
+
+ @functions{
+
+
+     public string Degistir(int ID,string PaylasimBaslik)
+     {
+         foreach (char c in PaylasimBaslik)
+         {
+             switch (c)
+             {
+                 case 'ş':
+                 case 'Ş':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 's');
+                     break;
+                 case 'ç':
+                 case 'Ç':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 'c');
+                     break;
+                 case 'ı':
+                 case 'İ':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 'i');
+                     break;
+                 case 'ğ':
+                 case 'Ğ':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 'g');
+                     break;
+                 case 'ü':
+                 case 'Ü':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 'u');
+                     break;
+                 case 'ö':
+                 case 'Ö':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, 'o');
+                     break;
+                 case '.':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, '-');
+                     break;
+                 case ',':
+                     PaylasimBaslik = PaylasimBaslik.Replace(c, '-');
+                     break;
+             }
+         }
+         string boslukkaldir = PaylasimBaslik.Replace(' ', '-').ToLower();
+         string maske = string.Format("{0}-{1}", ID, boslukkaldir);
+
+         return maske;
+     }
+
+ }
+
+
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>

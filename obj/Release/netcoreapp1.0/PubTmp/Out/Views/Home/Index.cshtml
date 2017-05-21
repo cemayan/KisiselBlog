@@ -1,0 +1,106 @@
+﻿@model IQueryable<KisiselBlog.Models.Paylasimlar>
+@using System.Globalization;
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+
+    <article class="box post post-excerpt">
+        <header>
+
+            <h2><a href="@Url.Action("Detay","Paylasimlar",new {id=Degistir(item.ID,item.PaylasimBaslik) })">@item.PaylasimBaslik</a></h2>
+            <p>&nbsp;</p>
+        </header>
+        <div class="info">
+            <span class="date"><span class="month">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.PaylasimTarih.Value.Month)<span>y</span></span> <span class="day">@item.PaylasimTarih.Value.Day</span><span class="year">, @item.PaylasimTarih.Value.Year</span></span>
+            <ul class="stats">
+                <li><a href="#" class="icon fa-eye">16</a></li>
+                <li><a href="#" class="icon fa-comment">16</a></li>
+                <li><a href="#" class="icon fa-heart">32</a></li>
+
+            </ul>
+        </div>
+        @if (item.PaylasimResimGorunur)
+        {
+            <a href="#" class="image featured"><img src="/images/@item.PaylasimResim" alt="" /></a>
+
+        }
+        <p>
+            @item.PaylasimOzet <a href="@Url.Action("Detay","Paylasimlar",new {id=Degistir(item.ID,item.PaylasimBaslik) })">Devamını gör...</a>
+        </p>
+
+    </article>
+}
+
+
+@functions{
+
+
+    public string Degistir(int ID, string PaylasimBaslik)
+    {
+        foreach (char c in PaylasimBaslik)
+        {
+            switch (c)
+            {
+                case 'ş':
+                case 'Ş':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 's');
+                    break;
+                case 'ç':
+                case 'Ç':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 'c');
+                    break;
+                case 'ı':
+                case 'İ':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 'i');
+                    break;
+                case 'ğ':
+                case 'Ğ':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 'g');
+                    break;
+                case 'ü':
+                case 'Ü':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 'u');
+                    break;
+                case 'ö':
+                case 'Ö':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, 'o');
+                    break;
+                case '.':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, '-');
+                    break;
+                case ',':
+                    PaylasimBaslik = PaylasimBaslik.Replace(c, '-');
+                    break;
+
+            }
+        }
+        string boslukkaldir = PaylasimBaslik.Replace(' ', '-').ToLower();
+        string maske = string.Format("{0}-{1}", ID, boslukkaldir);
+
+        return maske;
+    }
+
+}
+
+
+
+
+
+
+<div class="pagination">
+
+    <div class="pages">
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <span>&hellip;</span>
+        <a href="#">20</a>
+    </div>
+    <a href="#" class="button next">Next Page</a>
+</div>
